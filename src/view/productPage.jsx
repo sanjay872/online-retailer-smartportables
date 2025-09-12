@@ -3,6 +3,8 @@ import ItemTile from "../components/itemTile";
 import { useParams } from 'react-router-dom';
 import { useEffect } from "react";
 
+import '../styles/productpage.css'
+
 function ProductPage(){
 
     const [product,setProduct]=useState(null);

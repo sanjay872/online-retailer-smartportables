@@ -1,0 +1,20 @@
+.productpage{
+    max-width: 95vw;
+    height: 84vh;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+.productpage-name{
+    align-self: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 800;
+    font-size: 3em;
+}
+
+.productpage-items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

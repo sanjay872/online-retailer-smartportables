@@ -1,5 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-
+import "../styles/header.css";
+import { BsList } from "react-icons/bs";
+import { IoMdClose } from "react-icons/io";
+import { FaHome } from "react-icons/fa";
+import { useState } from 'react';
 
 function Header(){
 
@@ -22,12 +26,19 @@ function Header(){
         }
     ];
     const navigate = useNavigate();
+    const [showMenu,setShowMenu]=useState(false);
 
     return(
         <div className='header'>
-            {
-                product_types.map((product)=><div key={product.id} onClick={()=>navigate("/products/"+product.id)}>{product.name}</div>)
-            }
+            <div className='nav_btn' onClick={()=>setShowMenu((prev)=>!prev)}>
+                {showMenu?<IoMdClose className='cross_btn'></IoMdClose>:<BsList className='toggle_btn'></BsList>}
+            </div>
+            <div className={showMenu?'show_header-items':'header-items'}>
+                <FaHome onClick={()=>navigate("/")} className='header-item'></FaHome>
+                {
+                    product_types.map((product)=><div className='header-item' key={product.id} onClick={()=>navigate("/products/"+product.id)}>{product.name}</div>)
+                }
+            </div>
         </div>
     );
 }
