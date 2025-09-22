@@ -33,11 +33,18 @@ function Header(){
             <div className='nav_btn' onClick={()=>setShowMenu((prev)=>!prev)}>
                 {showMenu?<IoMdClose className='cross_btn'></IoMdClose>:<BsList className='toggle_btn'></BsList>}
             </div>
-            <div className={showMenu?'show_header-items':'header-items'}>
+            <div className='nav_actions'>
                 <FaHome onClick={()=>navigate("/")} className='header-item'></FaHome>
-                {
-                    product_types.map((product)=><div className='header-item' key={product.id} onClick={()=>navigate("/products/"+product.id)}>{product.name}</div>)
-                }
+                <div className={showMenu?'show_header-items':'header-items'}>
+                        {
+                            product_types.map((product)=><div className='header-item' key={product.id} onClick={()=>navigate("/products/"+product.id)}>{product.name}</div>)
+                        }
+                </div>        
+                <div className={showMenu?'show_search-items':'header-items'}>
+                        <button id='category_select'>Category</button>
+                        <input type="search" name="product-search" id="product_search_bar" />
+                        <button id='search_btn'>Search</button>
+                </div>
             </div>
         </div>
     );

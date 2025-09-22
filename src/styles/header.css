@@ -15,6 +15,8 @@
 }
 
 .header-item{
+    display: flex;
+    align-items: center;
     width: fit-content;
     height: 2em;
     padding: 1em;
@@ -31,11 +33,37 @@
     width: 1em;
 }
 
+.nav_actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search{
+    align-self: center;
+}
+
+#category_select, #product_search_bar, #search_btn{
+    padding: .5em;
+    outline: none;
+    border: none;
+}
+
+#category_select, #search_btn{
+    cursor: pointer;
+    font-weight: 600;
+    background-color: #FAEBD7;
+}
 
 @media (max-width: 768px) {
 
     .header-items{
         display: none;
+    }
+
+    .nav_actions{
+        flex-direction: column;
+        margin: 1em;
     }
 
     .toggle_btn,.cross_btn{
@@ -50,5 +78,9 @@
         display: flex;
         height: auto;
         flex-direction: column;
+    }
+
+    .show_search-items{
+        display: flex;
     }
 }
