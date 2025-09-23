@@ -47,12 +47,17 @@
     padding: .5em;
     outline: none;
     border: none;
+    box-shadow: .1em .1em .1em black;
 }
 
 #category_select, #search_btn{
     cursor: pointer;
     font-weight: 600;
     background-color: #FAEBD7;
+}
+
+#search_btn:focus, #category_select:focus{
+   box-shadow: .1em .1em 1.1em black; 
 }
 
 @media (max-width: 768px) {

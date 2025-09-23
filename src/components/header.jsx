@@ -27,6 +27,14 @@ function Header(){
     ];
     const navigate = useNavigate();
     const [showMenu,setShowMenu]=useState(false);
+    const [search,setSearch]=useState({category:"all",text:""});
+
+    function searchProduct(){
+        if(search.text===""||search.text===undefined||search.text==null){
+            return;
+        }
+        navigate("/products?category="+search.category+"&text="+search.text);
+    }
 
     return(
         <div className='header'>
@@ -41,9 +49,14 @@ function Header(){
                         }
                 </div>        
                 <div className={showMenu?'show_search-items':'header-items'}>
-                        <button id='category_select'>Category</button>
-                        <input type="search" name="product-search" id="product_search_bar" />
-                        <button id='search_btn'>Search</button>
+                        <select id='category_select' onChange={(event)=>{setSearch((prev)=>{return {...prev,category:event?event.target.value:""}})}}>
+                            <option value="all">All</option>
+                            {
+                                product_types.map((product)=><option key={product.id}>{product.name}</option>)
+                            }
+                        </select>
+                        <input type="search" value={search.text} name="product-search" id="product_search_bar" onChange={(event)=>{setSearch((prev)=>{return {...prev,text:event?event.target.value:""}})}}/>
+                        <button id='search_btn' onClick={searchProduct}>Search</button>
                 </div>
             </div>
         </div>
