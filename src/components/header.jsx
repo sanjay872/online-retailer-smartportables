@@ -45,7 +45,7 @@ function Header(){
                 <FaHome onClick={()=>navigate("/")} className='header-item'></FaHome>
                 <div className={showMenu?'show_header-items':'header-items'}>
                         {
-                            product_types.map((product)=><div className='header-item' key={product.id} onClick={()=>navigate("/products/"+product.id)}>{product.name}</div>)
+                            product_types.map((product)=><div className='header-item' key={product.id} onClick={()=>navigate("/products?category="+product.name)}>{product.name}</div>)
                         }
                 </div>        
                 <div className={showMenu?'show_search-items':'header-items'}>

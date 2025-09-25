@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ItemTile from "../components/itemTile";
-import { useParams, useSearchParams } from 'react-router-dom';
+import {useSearchParams } from 'react-router-dom';
 import { useEffect } from "react";
 import {search} from '../utils/searchfunction';
 
@@ -9,7 +9,6 @@ import '../styles/productpage.css'
 function ProductPage(){
 
     const [product,setProduct]=useState(null);
-    const {id} = useParams();
     const [searchParams] = useSearchParams();
 
     const category = searchParams.get('category'); 
@@ -131,17 +130,10 @@ function ProductPage(){
               },
           ]
       }
-            ];
-            console.log(id);
-            if(id){
-                const foundProduct = products.find((product) => product.id === id);
-                setProduct(foundProduct);
-            }
-            else{
-                setProduct((prev)=>search(products,category,text));
-            }
+            ];      
+            setProduct((prev)=>search(products,category,text))
         }
-    ,[id, category, text]);
+    ,[category, text]);
     
 
     return(
@@ -154,7 +146,7 @@ function ProductPage(){
                     </div>
                     <div className="productpage-items">
                         {
-                            id?product.items.map((item)=><ItemTile key={item.id} item={item}></ItemTile>):product.map((item)=><ItemTile key={item.id} item={item}></ItemTile>)
+                            product.map((item)=><ItemTile key={item.id} item={item}></ItemTile>)
                         }
                     </div>
                 </div>
