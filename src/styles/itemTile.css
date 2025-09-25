@@ -5,6 +5,7 @@
     margin: 1em;
     height: 20em;
     gap: 1em;
+    cursor: pointer;
 }
 
 .item_header{
