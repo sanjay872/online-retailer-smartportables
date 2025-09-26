@@ -12,7 +12,7 @@ function ItemTile({item,setViewState, setViewProduct}){
         console.log("Hi")
         setViewState((prev)=>!prev);
         setViewProduct(item);
-        navigate("/view");
+        navigate("view")
     }
 
     return(

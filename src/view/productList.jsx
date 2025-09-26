@@ -6,7 +6,7 @@ import {search} from '../utils/searchfunction';
 
 import '../styles/productpage.css'
 
-function ProductPage(){
+function ProductList(){
 
     const [product,setProduct]=useState(null);
     const [searchParams] = useSearchParams();
@@ -153,9 +153,9 @@ function ProductPage(){
                     </div>
                 </div>
             }
-            <Outlet product={viewItem}/>
+            <Outlet/>
         </div>
     );
 }
 
-export default ProductPage;
+export default ProductList;
