@@ -5,6 +5,7 @@ import HomePage from './view/homePage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ProductViewPage from './view/productViewPage';
 import ProductList from './view/productList';
+import ProductLayout from './view/productLayout';
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
           <Header></Header>
           <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path="/products?" element={<ProductList />}>
-              <Route path='view' element={<ProductViewPage />} />
+            <Route path='/products?' element={<ProductViewPage/>}></Route>
+            <Route path="/products/details" element={<ProductLayout />}>
+              
             </Route>
           </Routes>
           <Footer></Footer>
