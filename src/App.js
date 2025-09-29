@@ -1,25 +1,22 @@
 import './App.css';
-import Footer from './components/footer';
-import Header from './components/header';
 import HomePage from './view/homePage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ProductViewPage from './view/productViewPage';
-import ProductList from './view/productList';
 import ProductLayout from './view/productLayout';
+import ProductViewPage from './view/productViewPage';
+import { RootLayout } from './view/rootLayout';
 
 function App() {
   return (
     <div className="app">
         <BrowserRouter>
-          <Header></Header>
           <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/products?' element={<ProductViewPage/>}></Route>
-            <Route path="/products/details" element={<ProductLayout />}>
-              
+            <Route path='/' element={<RootLayout/>}>
+              <Route index element={<HomePage/>}/>
+              <Route path="products?" element={<ProductLayout/>}>
+                <Route path='view/:productId' element={<ProductViewPage/>}/>
+              </Route>
             </Route>
           </Routes>
-          <Footer></Footer>
         </BrowserRouter>
     </div>
   );

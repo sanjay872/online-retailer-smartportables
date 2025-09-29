@@ -1,18 +1,30 @@
 
 import ItemType from '../types/itemType';
 import '../styles/itemTile.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useSearchParams } from 'react-router-dom';
 
-function ItemTile({item,setViewState, setViewProduct}){
-    const  image = require("../images/"+item.imageId);
+function ItemTile({item,setViewProduct}){
+    const image = require("../images/"+item.imageId);
     const navigate=useNavigate()
+    const [searchParams] = useSearchParams();
 
+    const category = searchParams.get('category'); 
+    const text = searchParams.get('text');    
 
     function showView(){
         console.log("Hi")
-        setViewState((prev)=>!prev);
+        let url='';
+        if(category){
+            url+='?category='+category;
+            if(text){
+                url+='&&text='+text;
+            }
+        }
+        else if(text){
+            url+='?text='+text;
+        }
         setViewProduct(item);
-        navigate("view")
+        navigate('view/'+item.id+url);
     }
 
     return(

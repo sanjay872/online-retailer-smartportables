@@ -1,17 +1,15 @@
 import { useState } from "react";
 import ItemTile from "../components/itemTile";
-import {Outlet, useSearchParams } from 'react-router-dom';
+import {useSearchParams } from 'react-router-dom';
 import { useEffect } from "react";
 import {search} from '../utils/searchfunction';
 
 import '../styles/productpage.css'
 
-function ProductList(){
+function ProductList({setViewProduct}){
 
     const [product,setProduct]=useState(null);
     const [searchParams] = useSearchParams();
-    const [showProduct,setShowProduct]=useState(false);
-    const [viewItem, setViewItem]=useState(null)
 
     const category = searchParams.get('category'); 
     const text = searchParams.get('text');    
@@ -132,7 +130,8 @@ function ProductList(){
               },
           ]
       }
-            ];      
+            ];
+            console.log(category+' '+text);      
             setProduct((prev)=>search(products,category,text))
         }
     ,[category, text]);
@@ -148,12 +147,11 @@ function ProductList(){
                     </div>
                     <div className="productpage-items">
                         {
-                            product.map((item)=><ItemTile key={item.id} item={item} setViewState={setShowProduct} setViewProduct={setViewItem} ></ItemTile>)
+                            product.map((item)=><ItemTile key={item.id} item={item} setViewProduct={setViewProduct}></ItemTile>)
                         }
                     </div>
                 </div>
             }
-            <Outlet/>
         </div>
     );
 }

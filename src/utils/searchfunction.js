@@ -9,7 +9,7 @@ export function search(allproducts, category, searchtext){
 
     var filteredProducts;
     
-    if(category.toLowerCase()==='all'){
+    if(!category||category.toLowerCase()==='all'){
         filteredProducts=allproducts.flatMap(product=>product.items);
     }
     else{
