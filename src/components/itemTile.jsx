@@ -3,7 +3,7 @@ import ItemType from '../types/itemType';
 import '../styles/itemTile.css';
 import { useNavigate,useSearchParams } from 'react-router-dom';
 
-function ItemTile({item,setViewProduct}){
+function ItemTile({item,setViewProduct, setSplitView}){
     const image = require("../images/"+item.imageId);
     const navigate=useNavigate()
     const [searchParams] = useSearchParams();

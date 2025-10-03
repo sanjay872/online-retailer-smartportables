@@ -138,7 +138,7 @@ function ProductList({setViewProduct}){
     
 
     return(
-        <div>
+        <>
             {
                 product &&
                 <div className="productpage">
@@ -152,7 +152,7 @@ function ProductList({setViewProduct}){
                     </div>
                 </div>
             }
-        </div>
+        </>
     );
 }
 
