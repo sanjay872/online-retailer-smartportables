@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet} from "react-router-dom";
 import ProductList from "./productList";
 import { useState } from "react";
 

@@ -1,4 +1,16 @@
 .layout{
     display: flex;
     justify-content: center;
+    height: 92vh;
+}
+
+.child-view {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.3s ease-in-out;
+}
+
+.child-view.active {
+  opacity: 1;
+  transform: translateX(0);
 }

@@ -2,6 +2,7 @@
     display: flex;
     align-self: center;
     justify-self: center;
+    overflow: auto;
 }
 .product_leftside-image{
     width: 20em;
@@ -50,4 +51,22 @@
     color: blue;
     font-weight: 700;
     font-size: 1em;
+}
+.cart_btn{
+    align-self: flex-start;
+    margin-top: 2em;
+    font-weight: 600;
+    padding: .8em;
+    font-size: .8em;
+    border-radius: 10%;
+    outline: none;
+    border: none;
+    box-shadow: .1em .1em .1em black;
+    cursor: pointer;
+    background-color: darkslateblue;
+    color: white;
+}
+
+.cart_btn:focus{
+    box-shadow: .1em .1em .1em rgb(174, 171, 171);
 }
