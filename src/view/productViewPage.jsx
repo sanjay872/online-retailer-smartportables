@@ -1,35 +1,16 @@
 import { useOutletContext } from "react-router-dom";
 import '../styles/productviewpage.css';
+import { useCart } from "../utils/cartContext";
 
 export default function ProductViewPage(){
 
     const product = useOutletContext();
+    const {dispatch} = useCart();
 
     const  image = require("../images/"+product.imageId);
 
-    function addItemToStorage(){
-        const existCart=localStorage.getItem("cart");
-
-        if(existCart!=null){
-            const cartObj=JSON.parse(existCart);
-            let foundProduct=false;
-            cartObj.forEach((item)=>{
-                if(item.id===product.id){
-                    item.quantity++;
-                    foundProduct=true;
-                    return;
-                }
-            });
-            if(!foundProduct)
-                cartObj.push({...product,quantity:1});
-            localStorage.setItem("cart",JSON.stringify(cartObj));
-        }
-        else{
-            var cart=[]
-            cart.push({...product,quantity:1});
-            const stringCart=JSON.stringify(cart);
-            localStorage.setItem("cart",stringCart);
-        }
+    function addItemToCart(){
+        dispatch({type:"ADD_ITEM",payload:product});
     }
 
     return(
@@ -49,7 +30,7 @@ export default function ProductViewPage(){
                     <div className="product_rightside_end-price">${product.price}</div>
                     <div className="product_rightside_end-stock">Left out {product.stock}</div>
                 </div>
-                <button className="cart_btn" onClick={addItemToStorage}>Add to Cart</button>
+                <button className="cart_btn" onClick={addItemToCart}>Add to Cart</button>
             </div>
         </div>
     );

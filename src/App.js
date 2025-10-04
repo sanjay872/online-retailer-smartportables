@@ -4,20 +4,23 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ProductLayout from './view/productLayout';
 import ProductViewPage from './view/productViewPage';
 import { RootLayout } from './view/rootLayout';
+import CartProvider from './utils/cartContext';
 
 function App() {
   return (
     <div className="app">
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<RootLayout/>}>
-              <Route index element={<HomePage/>}/>
-              <Route path="products?" element={<ProductLayout/>}>
-                <Route path='view/:productId' element={<ProductViewPage/>}/>
+        <CartProvider>
+            <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<RootLayout/>}>
+                <Route index element={<HomePage/>}/>
+                <Route path="products?" element={<ProductLayout/>}>
+                  <Route path='view/:productId' element={<ProductViewPage/>}/>
+                </Route>
               </Route>
-            </Route>
-          </Routes>
-        </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
+        </CartProvider>
     </div>
   );
 }
