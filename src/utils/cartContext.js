@@ -28,6 +28,18 @@ function cartReducer(state,action){
             else{
                 return state;
             }
+        case "UPDATE_QUANTITY":
+            return state.map((item)=>{
+                if(item.id===action.id){
+                    if(item.quantity===1&&!action.increase){
+                        return item;
+                    }
+                    return {...item,quantity:action.increase?item.quantity+1:item.quantity-1}
+                }
+                else{
+                    return item;
+                }
+            })    
         case "CLEAR_CART":
             return [];
         default:
@@ -43,8 +55,8 @@ export default function CartProvider({children}){
         return saved? JSON.parse(saved):initialState;
     });
 
+
     useEffect(()=>{
-        console.log(cart);
         localStorage.setItem("cart",JSON.stringify(cart));
     },[cart]);
 

@@ -1,0 +1,28 @@
+.price_calculation{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    margin-top: 2rem;
+    gap: 2em;
+}
+.price_calculation_detail-info{
+    font-size: 1.5em;
+    font-weight: 700;    
+}
+.price_calculation_form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap:1em;
+    margin-top: 1em;
+    align-self: center;
+}
+.price_table{
+    width: 100%;
+}
+
+.price_table-data{
+    padding: 1em;
+    border-bottom: 1px solid black;
+}

@@ -60,6 +60,19 @@
    box-shadow: .1em .1em 1.1em black; 
 }
 
+.cart_icon{
+    position: relative;
+}
+
+.cart_item_count{
+    color: white;
+    font-size: 1em;
+    font-weight: 800;
+    position: absolute;
+    top: 1em;
+    right: 0em;
+}
+
 @media (max-width: 768px) {
 
     .header-items{

@@ -19,7 +19,7 @@ export function search(allproducts, category, searchtext){
     }
 
     if(searchtext && searchtext.trim()!==""){
-        return filteredProducts.filter((product)=>product.title.toLowerCase().includes(searchtext) || product.description.toLowerCase().includes(searchtext));
+        return filteredProducts.filter((product)=>product.title.toLowerCase().includes(searchtext.toLowerCase()) || product.description.toLowerCase().includes(searchtext.toLowerCase()));
     }
 
     console.log(filteredProducts)

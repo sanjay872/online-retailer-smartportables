@@ -5,6 +5,7 @@ import ProductLayout from './view/productLayout';
 import ProductViewPage from './view/productViewPage';
 import { RootLayout } from './view/rootLayout';
 import CartProvider from './utils/cartContext';
+import { Cart } from './view/cart';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
                 <Route path="products?" element={<ProductLayout/>}>
                   <Route path='view/:productId' element={<ProductViewPage/>}/>
                 </Route>
+                <Route path='/cart' element={<Cart/>}></Route>
               </Route>
             </Routes>
           </BrowserRouter>

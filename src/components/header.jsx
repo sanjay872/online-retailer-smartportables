@@ -4,8 +4,12 @@ import { BsList } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 import { FaHome } from "react-icons/fa";
 import { useState } from 'react';
+import { useCart } from '../utils/cartContext';
+import { FaCartArrowDown } from "react-icons/fa";
 
 function Header(){
+
+    const {cart}=useCart();
 
     const product_types=[
         {
@@ -57,6 +61,9 @@ function Header(){
                         </select>
                         <input type="search" value={search.text} name="product-search" id="product_search_bar" onChange={(event)=>{setSearch((prev)=>{return {...prev,text:event?event.target.value:""}})}}/>
                         <button id='search_btn' onClick={searchProduct}>Search</button>
+                </div>
+                <div className='cart_icon'>
+                    <FaCartArrowDown className='header-item' onClick={()=>navigate("/cart")}/><span className='cart_item_count'>{cart.length}</span>
                 </div>
             </div>
         </div>
