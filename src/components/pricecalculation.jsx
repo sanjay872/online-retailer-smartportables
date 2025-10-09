@@ -5,7 +5,7 @@ import "../styles/pricecalculation.css";
 export function PriceCalculation({cart}){
     
     const [fullName,setFullName]=useState("");
-    const [email,setEmail]=useState("");
+    const [phoneNumber,setPhoneNumber]=useState("");
     const [address,setAddress]=useState("");
     const [zipCode,setZipCode]=useState(0);
     const [isCompleted,setIsCompleted]=useState(false);
@@ -17,7 +17,7 @@ export function PriceCalculation({cart}){
 
     function calculatePrice(e){
         e.preventDefault();
-        if(fullName===""||email===""||address===""||zipCode===0){
+        if(fullName===""||phoneNumber===""||address===""||zipCode===0){
             setIsCompleted(false);
             return;
         }
@@ -75,7 +75,7 @@ export function PriceCalculation({cart}){
             <form onSubmit={calculatePrice} className="price_calculation_form">
                 {isCompleted?<></>:<div className="price_calculation_detail-info">Fill all the fields</div>}
                 <input type="text" name="FullName" className="price_calculation_form-input" placeholder="Full Name" onChange={(e)=>setFullName(e.target.value)}/>
-                <input type="text" name="Email" className="price_calculation_form-input" placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
+                <input type="text" name="PhoneNumber" className="price_calculation_form-input" placeholder="Phone Number" onChange={(e)=>setPhoneNumber(e.target.value)}/>
                 <input type="text" name="Address" className="price_calculation_form-input" placeholder="Address" onChange={(e)=>setAddress(e.target.value)}/>
                 <input type="text" name="zipcode" className="price_calculation_form-input" placeholder="Zip Code" onChange={(e)=>setZipCode(e.target.value)}/>
                 <button type="submit">Checkout</button>
