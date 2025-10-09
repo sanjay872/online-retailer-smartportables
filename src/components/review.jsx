@@ -129,7 +129,7 @@ function makeStars(){
 
 function addReview(e){
     e.preventDefault();
-    if(name && title && review && rating){
+    if(name!=="" && title!=="" && review!=="" && rating){
         const newReview={
             id:randomId(),
             product_id:productId,
@@ -140,6 +140,11 @@ function addReview(e){
             date: new Date().toISOString().split('T')[0]
         }
         setReviews((existingReviews)=>[...existingReviews,newReview]);
+
+        setName("");
+        setRating("");
+        setTitle("");
+        setReview("");
     }
 }
 
@@ -152,9 +157,9 @@ function addReview(e){
             </div>
             <div>
                 <form onSubmit={addReview}>
-                    <input type="text" placeholder="Name" name="Name" onChange={(e)=>setName(e.target.value)}/>
-                    <input type="text" placeholder="Title" name="Title" onChange={(e)=>setTitle(e.target.value)}/>
-                    <textarea placeholder="Enter your review" name="Review" onChange={(e)=>setReview(e.target.value)} />
+                    <input type="text" placeholder="Name" value={name} name="Name" onChange={(e)=>setName(e.target.value)}/>
+                    <input type="text" placeholder="Title" value={title} name="Title" onChange={(e)=>setTitle(e.target.value)}/>
+                    <textarea placeholder="Enter your review" value={review} name="Review" onChange={(e)=>setReview(e.target.value)} />
                     <div>
                         Rating:{
                             makeStars()
