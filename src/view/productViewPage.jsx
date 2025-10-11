@@ -2,6 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import '../styles/productviewpage.css';
 import { useCart } from "../utils/cartContext";
 import { Review } from "../components/review";
+import { toast } from 'react-toastify';
 
 export default function ProductViewPage(){
 
@@ -12,6 +13,7 @@ export default function ProductViewPage(){
 
     function addItemToCart(){
         dispatch({type:"ADD_ITEM",payload:product});
+        toast("Product Added into Cart!")
     }
 
     return(

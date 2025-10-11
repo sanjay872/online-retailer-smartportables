@@ -26,3 +26,28 @@
     padding: 1em;
     border-bottom: 1px solid black;
 }
+
+.price_calculation_form-input{
+    padding: 1em;
+    width: 100%;
+}
+
+.price_calculation_form-checkout{
+    margin-top: 1em;
+    padding: .5em;
+    color: white;
+    background-color: darkslateblue;
+    border: none;
+    box-shadow: .1em .2em .2em gray;
+    cursor: pointer;
+}
+
+.price_calculation_form-cancel{
+     margin-top: 1em;
+    padding: .5em;
+    color: black;
+    background-color: #FAEBD7;
+    border: none;
+    box-shadow: .1em .2em .2em gray;
+    cursor: pointer;
+}

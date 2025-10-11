@@ -1,6 +1,7 @@
 import './App.css';
 import HomePage from './view/homePage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import ProductLayout from './view/productLayout';
 import ProductViewPage from './view/productViewPage';
 import { RootLayout } from './view/rootLayout';

@@ -6,6 +6,7 @@ import { FaHome } from "react-icons/fa";
 import { useState } from 'react';
 import { useCart } from '../utils/cartContext';
 import { FaCartArrowDown } from "react-icons/fa";
+import {toast } from 'react-toastify';
 
 function Header(){
 
@@ -35,6 +36,7 @@ function Header(){
 
     function searchProduct(){
         if(search.text===""||search.text===undefined||search.text==null){
+            toast("Search value Required!");
             return;
         }
         navigate("/products?category="+search.category+"&text="+search.text);

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 import "../styles/pricecalculation.css";
 
@@ -19,6 +20,7 @@ export function PriceCalculation({cart}){
         e.preventDefault();
         if(fullName===""||phoneNumber===""||address===""||zipCode===0){
             setIsCompleted(false);
+            toast("Fill all fields to checkout!")
             return;
         }
         setIsCompleted(true);
@@ -38,6 +40,10 @@ export function PriceCalculation({cart}){
         setItemPrice(0);
         setTaxPrice(0);
         setTotalPrice(0);
+        setFullName("");
+        setAddress("");
+        setPhoneNumber("");
+        setZipCode("");
         setIsCompleted(false);
     }
 
@@ -74,12 +80,12 @@ export function PriceCalculation({cart}){
             </div>
             <form onSubmit={calculatePrice} className="price_calculation_form">
                 {isCompleted?<></>:<div className="price_calculation_detail-info">Fill all the fields</div>}
-                <input type="text" name="FullName" className="price_calculation_form-input" placeholder="Full Name" onChange={(e)=>setFullName(e.target.value)}/>
-                <input type="text" name="PhoneNumber" className="price_calculation_form-input" placeholder="Phone Number" onChange={(e)=>setPhoneNumber(e.target.value)}/>
-                <input type="text" name="Address" className="price_calculation_form-input" placeholder="Address" onChange={(e)=>setAddress(e.target.value)}/>
-                <input type="text" name="zipcode" className="price_calculation_form-input" placeholder="Zip Code" onChange={(e)=>setZipCode(e.target.value)}/>
-                <button type="submit">Checkout</button>
-                <button type="button" onClick={reset}>Cancel</button>
+                <input type="text" name="FullName" className="price_calculation_form-input" value={fullName} placeholder="Full Name" onChange={(e)=>setFullName(e.target.value)}/>
+                <input type="text" name="PhoneNumber" className="price_calculation_form-input" value={phoneNumber} placeholder="Phone Number" onChange={(e)=>setPhoneNumber(e.target.value)}/>
+                <input type="text" name="Address" className="price_calculation_form-input" value={address} placeholder="Address" onChange={(e)=>setAddress(e.target.value)}/>
+                <input type="text" name="zipcode" className="price_calculation_form-input" value={zipCode} placeholder="Zip Code" onChange={(e)=>setZipCode(e.target.value)}/>
+                <button type="submit" className="price_calculation_form-checkout">Checkout</button>
+                <button type="button" className="price_calculation_form-cancel" onClick={reset}>Cancel</button>
             </form>
         </div>
     );
