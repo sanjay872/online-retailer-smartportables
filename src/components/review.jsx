@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import ReviewTile from "./reviewTile";
 import { FaRegStar, FaStar} from "react-icons/fa";
+import "../styles/review.css";
+import Modal from "./modal";
 
 export function Review({productId}){
     
@@ -102,6 +104,7 @@ const[name,setName]=useState(null);
 const[title,setTitle]=useState(null);
 const[review,setReview]=useState(null);
 const[rating,setRating]=useState(null);
+const[isOpen,setIsOpen]=useState(false);
 
 
 useEffect(()=>{
@@ -139,35 +142,39 @@ function addReview(e){
             rating:rating,
             date: new Date().toISOString().split('T')[0]
         }
-        setReviews((existingReviews)=>[...existingReviews,newReview]);
+        setReviews((existingReviews)=>[newReview,...existingReviews]);
 
         setName("");
         setRating("");
         setTitle("");
         setReview("");
+        setIsOpen(true);
     }
 }
 
     return(
-        <div>
-            <div>
+        <div className="reviews">
+            <div className="reivews_header">
+              <div className="reviews_header-title">Add Reviews</div>
+              <div>OR</div>
+              <button className="reviews_header-viewbtn" onClick={()=>setIsOpen(true)}>View Reviews</button>
+            </div>
+              <form onSubmit={addReview} className="review_form">
+                  <input className="review_form-inputs" type="text" placeholder="Name" value={name} name="Name" onChange={(e)=>setName(e.target.value)}/>
+                  <input className="review_form-inputs" type="text" placeholder="Title" value={title} name="Title" onChange={(e)=>setTitle(e.target.value)}/>
+                  <textarea  className="review_form-inputs review-textarea" placeholder="Enter your review" value={review} name="Review" onChange={(e)=>setReview(e.target.value)} />
+                  <div className="review-rating">
+                      Rating {
+                          makeStars()
+                      }
+                  </div>
+                  <button className="reviews_form-postbtn" type="submit">Post</button>
+              </form>
+              <Modal isOpen={isOpen} onClose={()=>setIsOpen(false)}>
                 {   reviews &&
                     reviews.map((review)=><ReviewTile review={review}/>)
                 }
-            </div>
-            <div>
-                <form onSubmit={addReview}>
-                    <input type="text" placeholder="Name" value={name} name="Name" onChange={(e)=>setName(e.target.value)}/>
-                    <input type="text" placeholder="Title" value={title} name="Title" onChange={(e)=>setTitle(e.target.value)}/>
-                    <textarea placeholder="Enter your review" value={review} name="Review" onChange={(e)=>setReview(e.target.value)} />
-                    <div>
-                        Rating:{
-                            makeStars()
-                        }
-                    </div>
-                    <button type="submit">Post</button>
-                </form>
-            </div>
+              </Modal>
         </div>
     );
 }

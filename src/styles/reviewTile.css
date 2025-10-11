@@ -1,0 +1,23 @@
+.review_tile{
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    margin: 1em;
+    gap:.5em;
+    width: 90%;
+    box-shadow: .1em .2em .2em gray;
+}
+.review_tile_header{
+    display: flex;
+    gap: .5em;
+    align-items: center;
+}
+.review_title_body_rating{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+.review_title_body-subinfo{
+    display: flex;
+    gap: 2em;
+}

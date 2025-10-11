@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+    color: white;
     background-color: darkslateblue;
     box-shadow: .1em .2em .1em rgb(141, 138, 138);
 }

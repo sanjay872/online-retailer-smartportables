@@ -1,4 +1,6 @@
 import { FaStar } from "react-icons/fa";
+import "../styles/reviewTile.css";
+import { FaRegUserCircle } from "react-icons/fa";
 
 export default function ReviewTile({review}){
 
@@ -10,19 +12,30 @@ export default function ReviewTile({review}){
         return elements;
     }
 
+    function convertDate(dateStr){
+        const date = new Date(dateStr);
+        const options = { month: "short", day: "numeric", year: "numeric" };
+        const formatted = date.toLocaleDateString("en-US", options);
+        return formatted;
+    }
+
     return(
         <div className="review_tile">
-            <div>
-                <div>User Image</div>
+            <div className="review_tile_header">
+                <FaRegUserCircle />
                 <div>{review.username}</div>
             </div>
-            <div>
-                <div>
-                    {makeStars()}
+            <div className="review_title_body">
+                <div className="review_title_body_rating">
+                    <div className="review_title_body_rating-stars">
+                        {makeStars()} 
+                    </div>
+                    <div className="review_title_body_rating-title">{review.title}</div>
                 </div>
-                <div>{review.title}</div>
-                <div>{review.date}</div>
-                <div>{review.review}</div>
+                <div className="review_title_body-subinfo">
+                    <div>Reviewed on {convertDate(review.date)}</div>
+                </div>
+                <div className="review_title_body-main">{review.review}</div>
             </div>
         </div>
     );
