@@ -1,10 +1,9 @@
 .home{
-    height: 85vh;
+    height: 86vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
-    padding: 2em;
     background-color: antiquewhite;
 }
 

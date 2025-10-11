@@ -1,7 +1,4 @@
 .productpage{
-    margin-top: 5em;
-    max-width: 95vw;
-    height: 84vh;
     display: flex;
     flex-direction: column;
     overflow: auto;

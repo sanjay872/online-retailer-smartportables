@@ -41,7 +41,7 @@ export function Cart(){
                                         </div>
                                     </td>
                                     <td className="table_data">
-                                        <button onClick={()=>deleteItem(item.id)}>Delete</button>
+                                        <button className="table-deletebtn" onClick={()=>deleteItem(item.id)}>Delete</button>
                                     </td>
                                 </tr>
                             );
