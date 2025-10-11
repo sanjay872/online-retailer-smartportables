@@ -74,15 +74,15 @@ export function PriceCalculation({cart}){
                             <tbody>
                                 <tr className="price_table-row">
                                     <td className="price_table-data">Total Price</td>
-                                    <td className="price_table-data">${itemTotalPrice}</td>
+                                    <td className="price_table-data">${itemTotalPrice.toFixed(2)}</td>
                                 </tr>
                                 <tr className="price_table-row">
                                     <td className="price_table-data">Tax</td>
-                                    <td className="price_table-data">${taxPrice}</td>
+                                    <td className="price_table-data">${taxPrice.toFixed(2)}</td>
                                 </tr>
                                 <tr className="price_table-row">
                                     <td className="price_table-data">Final Price</td>
-                                    <td className="price_table-data">${totalPrice}</td>
+                                    <td className="price_table-data">${totalPrice.toFixed(2)}</td>
                                 </tr>
                             </tbody>
                         </table>
