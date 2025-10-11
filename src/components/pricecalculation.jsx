@@ -8,7 +8,7 @@ export function PriceCalculation({cart}){
     const [fullName,setFullName]=useState("");
     const [phoneNumber,setPhoneNumber]=useState("");
     const [address,setAddress]=useState("");
-    const [zipCode,setZipCode]=useState(0);
+    const [zipCode,setZipCode]=useState("");
     const [isCompleted,setIsCompleted]=useState(false);
 
     const [itemTotalPrice,setItemPrice]=useState(0);
@@ -23,6 +23,20 @@ export function PriceCalculation({cart}){
             toast("Fill all fields to checkout!")
             return;
         }
+
+        if (!/^\d*$/.test(phoneNumber)) {
+            toast('Only digits are allowed in Phone number.');
+            return;
+        } else if (phoneNumber.length > 0 && !/^\d{10}$/.test(phoneNumber)) {
+            toast('Phone number must be exactly 10 digits.');
+            return;
+        }
+
+        if(!/^\d*$/.test(zipCode)){
+            toast('Only digits are allowed in Zip code.')
+            return;
+        }
+
         setIsCompleted(true);
 
         var itemTotal=0;
