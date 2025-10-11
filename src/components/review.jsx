@@ -172,7 +172,7 @@ function addReview(e){
               </form>
               <Modal isOpen={isOpen} onClose={()=>setIsOpen(false)}>
                 {   reviews &&
-                    reviews.map((review)=><ReviewTile review={review}/>)
+                    reviews.map((review)=><ReviewTile key={review.id} review={review}/>)
                 }
               </Modal>
         </div>
