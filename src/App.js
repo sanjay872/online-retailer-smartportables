@@ -7,6 +7,7 @@ import ProductViewPage from './view/productViewPage';
 import { RootLayout } from './view/rootLayout';
 import CartProvider from './utils/cartContext';
 import { Cart } from './view/cart';
+import { NotFound } from './view/notfound';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
                   <Route path='view/:productId' element={<ProductViewPage/>}/>
                 </Route>
                 <Route path='/cart' element={<Cart/>}></Route>
+                <Route path='*' element={<NotFound/>}></Route>
               </Route>
             </Routes>
           </BrowserRouter>
